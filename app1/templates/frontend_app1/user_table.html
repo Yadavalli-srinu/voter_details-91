@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: url("https://liveindia.tv/wp-content/uploads/2025/01/Voter-ID.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+
+            height: 100vh;
+            width: 100vw;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 40px;
+        }
+
+        /* Card container for table */
+        .table-box {
+            width: 80%;
+            max-width: 1000px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.4);
+            margin-bottom: 20px;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: Arial;
+            
+            border-radius: 10px;
+        }
+
+        /* Header */
+        table th {
+            background: orange;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        /* Data rows */
+        table td {
+            background: #e6e6e6;
+            padding: 10px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        table tr:hover td {
+            background: white;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 10px 22px;
+            background-image: linear-gradient(blue, gray);
+            color: white;
+            border-radius: 8px;
+           
+            font-size: 15px;
+            font-weight: bold;
+            box-shadow: 0 0 8px rgba(0,0,0,0.3);
+            
+        }
+
+        .btn:hover {
+            
+        }
+
+        /* Edit/delete links inside table */
+        table a {
+            text-decoration: none;
+            color: blue;
+            font-weight: bold;
+        }
+         .btn-home {
+    display: inline-block;
+    padding: 12px 25px;
+    background: linear-gradient(orange, #cc5200);
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.btn-home:hover {
+    background: linear-gradient(black, #ff6600);
+    
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="table-box">
+        <table>
+            <tr>
+                <th>Name</th>
+            <th>Voter_id</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            </tr>
+
+            {% for i in data %}
+            <tr>
+                <td>{{i.name}}</td>
+            <td>{{i.voter_id}}</td>
+            <td><a href="{% url 'user_update' i.id %}">Edit</a></td>
+            <td><a href="{% url 'user_delate' i.id %}">Del</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <a class="btn" href="{% url 'user_empty' %}">ADD</a>
+    <button><a href="{% url 'home101' %}" class="btn-home">HOME</a></button>
+</body>
+</html>
+    
